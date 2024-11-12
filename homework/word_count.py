@@ -6,7 +6,7 @@ import fileinput
 import glob
 import os.path
 from itertools import groupby
-
+import string
 
 #
 # Escriba la función load_input que recive como parámetro un folder y retorna
@@ -15,13 +15,12 @@ from itertools import groupby
 # todas las lineas de cada uno de los archivos. La función es genérica y debe
 # leer todos los archivos de folder entregado como parámetro.
 #
-# Por ejemplo:
+# Por ejemplo:aa
 #   [
 #     ('text0'.txt', 'Analytics is the discovery, inter ...'),
 #     ('text0'.txt', 'in data. Especially valuable in ar...').
 #     ...
 #     ('text2.txt'. 'hypotheses.')
-
 #   ]
 #
 def load_input(input_directory):
@@ -64,7 +63,6 @@ def line_preprocessing(sequence):
     ]
     return sequence
 
-
 #
 # Escriba una función llamada maper que recibe una lista de tuplas de la
 # función anterior y retorna una lista de tuplas (clave, valor). En este caso,
@@ -72,7 +70,7 @@ def line_preprocessing(sequence):
 # conteo.
 #
 #   [
-#     ('Analytics', 1),
+#     ('analytics', 1),
 #     ('is', 1),
 #     ...
 #   ]
@@ -127,7 +125,6 @@ def create_ouptput_directory(output_directory):
         os.rmdir(output_directory)
     os.makedirs(output_directory)
 
-
 #
 # Escriba la función save_output, la cual almacena en un archivo de texto
 # llamado part-00000 el resultado del reducer. El archivo debe ser guardado en
@@ -142,7 +139,6 @@ def save_output(output_directory, sequence):
         for key, value in sequence:
             f.write(f"{key}\t{value}\n")
 
-
 #
 # La siguiente función crea un archivo llamado _SUCCESS en el directorio
 # entregado como parámetro.
@@ -151,7 +147,6 @@ def create_marker(output_directory):
     """Create Marker"""
     with open(f"{output_directory}/_SUCCESS", "w", encoding="utf-8") as f:
         f.write("")
-
 
 #
 # Escriba la función job, la cual orquesta las funciones anteriores.
@@ -176,6 +171,6 @@ def run_job(input_directory, output_directory):
 
 if __name__ == "__main__":
     run_job(
-        "input",
-        "output",
+        "files/input",
+        "files/output",
     )
